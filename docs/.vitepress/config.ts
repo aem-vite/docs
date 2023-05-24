@@ -60,16 +60,6 @@ function getGuideSidebar() {
     //   ],
     // },
     {
-      text: 'Legacy Bundles',
-      items: [
-        { text: 'What are they?', link: '/guide/legacy-bundles/' },
-        {
-          text: 'ClientLibs support',
-          link: '/guide/legacy-bundles/clientlibs/',
-        },
-      ],
-    },
-    {
       text: 'Support',
       items: [
         {
@@ -219,6 +209,16 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
         'utf-8',
       ),
     ],
+    [
+      'script',
+      {
+        type: 'module',
+      },
+      fs.readFileSync(
+        path.resolve(__dirname, './inlined-scripts/sentry.js'),
+        'utf-8',
+      ),
+    ],
   ],
 
   themeConfig: {
@@ -242,10 +242,6 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
       {
         text: 'Front End',
         link: '/guide/front-end/',
-      },
-      {
-        text: 'Legacy Bundles',
-        link: '/guide/legacy-bundles/',
       },
       {
         text: 'FAQs',
