@@ -13,11 +13,11 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@types/node": "^18.16.14",
+    "@types/node": "^18.16.16",
     "vitepress": "1.0.0-beta.1"
   },
   "dependencies": {
-    "@algolia/client-search": "^4.17.0",
-    "@sentry/browser": "^7.53.0"
+    "@algolia/client-search": "^4.17.1",
+    "@sentry/browser": "^7.54.0"
   }
 }
