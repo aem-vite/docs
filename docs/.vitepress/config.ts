@@ -38,6 +38,10 @@ function getGuideSidebar() {
           text: 'Permissions',
           link: '/guide/backend/permissions/',
         },
+        {
+          text: 'Custom Namespaces',
+          link: '/guide/backend/custom-namespaces/',
+        },
       ],
     },
     {
