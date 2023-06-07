@@ -130,7 +130,7 @@ export default defineConfig(({ command }) => ({
   build: {
     assetsDir: 'clientlib-site/resources/static',
 
-    rollupOtions: {
+    rollupOptions: {
       assetFileNames(chunk) {
         return chunk.name?.endsWith('.css')
           ? 'clientlib-site/resources/css/[name][extname]'
