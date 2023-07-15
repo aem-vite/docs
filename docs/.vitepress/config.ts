@@ -1,7 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-
+import { createWriteStream, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { SitemapStream } from 'sitemap';
 import { defineConfigWithTheme, DefaultTheme } from 'vitepress';
+
+interface Link {
+  lastmod?: number;
+  url: string;
+}
 
 const title = 'AEM Vite';
 const description =
@@ -79,12 +84,34 @@ function getGuideSidebar() {
   ];
 }
 
+const links: Link[] = [];
+
 export default defineConfigWithTheme<DefaultTheme.Config>({
   base: '/',
   title,
   titleTemplate: 'AEM Vite',
   description,
   lastUpdated: true,
+
+  transformHtml: (_, id, { pageData }) => {
+    if (!/[\\/]404\.html$/.test(id)) {
+      links.push({
+        lastmod: pageData.lastUpdated,
+        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+      });
+    }
+  },
+
+  buildEnd: async ({ outDir }) => {
+    const sitemap = new SitemapStream({ hostname: 'https://www.aemvite.dev/' });
+    const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'));
+
+    sitemap.pipe(writeStream);
+    links.forEach((link) => sitemap.write(link));
+    sitemap.end();
+
+    await new Promise((r) => writeStream.on('finish', r));
+  },
 
   head: [
     [
@@ -208,20 +235,14 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
     [
       'script',
       {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/fathom.js'),
-        'utf-8',
-      ),
+      readFileSync(resolve(__dirname, './inlined-scripts/fathom.js'), 'utf-8'),
     ],
     [
       'script',
       {
         type: 'module',
       },
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/sentry.js'),
-        'utf-8',
-      ),
+      readFileSync(resolve(__dirname, './inlined-scripts/sentry.js'), 'utf-8'),
     ],
   ],
 
@@ -229,8 +250,8 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
     logo: 'static/logo.png',
 
     algolia: {
-      appId: 'BH4D9OD16A',
-      apiKey: '0479a3a9031b5947143a70dc4969da0d',
+      appId: '5NUB4KA4TT',
+      apiKey: 'c591e327c4f90a50c6bbb922bb0a1830',
       indexName: 'aemvite',
     },
 
