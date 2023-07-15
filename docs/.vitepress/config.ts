@@ -251,7 +251,7 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
 
     algolia: {
       appId: '5NUB4KA4TT',
-      apiKey: 'c591e327c4f90a50c6bbb922bb0a1830',
+      apiKey: 'a9ae360ff258fc70432c525f159158e2',
       indexName: 'aemvite',
     },
 
