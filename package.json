@@ -6,6 +6,7 @@
   "repository": "git@github.com:aem-vite/aem-vite.dev.git",
   "author": "Chris Shaw <me@cshaw.xyz>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs --port 7100",
     "docs:build": "vitepress build docs",
@@ -13,11 +14,11 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@types/node": "^18.16.19",
+    "@types/node": "^20.10.0",
     "sitemap": "^7.1.1",
-    "vitepress": "1.0.0-beta.5"
+    "vitepress": "1.0.0-rc.31"
   },
   "dependencies": {
-    "@docsearch/js": "^3.5.1"
+    "@docsearch/js": "^3.5.2"
   }
 }
