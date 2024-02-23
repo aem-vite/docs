@@ -22,14 +22,16 @@ You might think this is a tough problem to resolve but AEM provides a nice simpl
 
 Here is an example of how to configure Vite to ensure all files are placed in the correct places.
 
+<!-- prettier-ignore-start -->
 ```ts{5}
 export default defineConfig(() => ({
   build: {
     rollupOptions: {
       output: {
-        chunkFileNames: 'clientlib-site/resources/chunks/[name].[hash].js',
+        chunkFileNames: 'clientlib-site/resources/chunks/[name].[hash].js', // [!code focus]
       },
     },
   },
 }));
 ```
+<!-- prettier-ignore-end -->

@@ -1,5 +1,6 @@
 :root {
   --vp-c-brand: #f4414a;
+  --vp-c-brand-alt: #9466ee;
   --vp-c-brand-light: #e75a61;
   --vp-c-brand-lighter: #e6686f;
   --vp-c-brand-dark: var(--vp-c-brand-lighter);
@@ -10,4 +11,12 @@
   --vp-button-brand-hover-bg: var(--vp-c-brand-light);
 
   --vp-home-hero-name-color: #d7373f;
+
+  --vp-nav-bg-color: transparent;
+}
+
+.VPNav {
+  backdrop-filter: blur(10px);
+  position: sticky !important;
+  top: 0;
 }

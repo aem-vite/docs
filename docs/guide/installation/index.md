@@ -10,13 +10,25 @@ Installation is straightforward and easy. Please ensure your read the below care
 
 Installing the Vite plugin is as simple as using your favourite package manager.
 
-```bash
-npm install --save-dev @aem-vite/vite-aem-plugin
-# or; yarn
-yarn add -D @aem-vite/vite-aem-plugin
-# or; pnpm
+::: code-group
+
+```sh [npm]
+npm install -D @aem-vite/vite-aem-plugin
+```
+
+```sh [pnpm]
 pnpm add -D @aem-vite/vite-aem-plugin
 ```
+
+```sh [yarn]
+yarn add -D @aem-vite/vite-aem-plugin
+```
+
+```sh [bun]
+bun add -D @aem-vite/vite-aem-plugin
+```
+
+:::
 
 The next step is to [configure your project](../front-end/) to make full use of Vite.
 

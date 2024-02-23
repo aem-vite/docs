@@ -21,7 +21,7 @@ Seriously though, AEM Vite uses a Vite plugin that:
 - Strips away your desired AEM ClientLibs
 - Injects the Vite client scripts 💯
 
-All of this happens in real-time and is 100% transparent. This means less time deploying front end code and more time developing.
+All of this happens in real-time and is 100% transparent. This means less time managing complex tooling and more time developing.
 
 ## AEM support
 

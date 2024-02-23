@@ -12,29 +12,47 @@ The import rewriter takes the ES module import paths and converts them into AEM 
 
 AEM Vite provides a plugin that will rewrite dynamic import paths to your `/etc.clientlibs` proxy path.
 
-```bash
-npm install --save-dev @aem-vite/import-rewriter
-# or; yarn
+::: code-group
+
+```sh [npm]
+npm install -D @aem-vite/import-rewriter
+```
+
+```sh [pnpm]
+pnpm add -D @aem-vite/import-rewriter
+```
+
+```sh [yarn]
 yarn add -D @aem-vite/import-rewriter
 ```
+
+```sh [bun]
+bun add -D @aem-vite/import-rewriter
+```
+
+:::
+
+> [!TIP]
+> This plugin is already included by default in `@aem-vite/vite-aem-plugin`. Refer to the below for further configuration options.
 
 ## Configuration
 
 Getting this plugin configured is really simple, all it requires is your ClientLib public path.
 
-```ts{1,6-9}
-import { bundlesImportRewriter } from '@aem-vite/import-rewriter';
+<!-- prettier-ignore-start -->
+```ts
+import { bundlesImportRewriter } from '@aem-vite/import-rewriter'; // [!code focus]
 
 export default defineConfig(() => ({
   plugins: [
-    // ... all other plugins
-    bundlesImportRewriter({
-      publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site',
-      resourcesPath: 'resources/js',
-    }),
+    bundlesImportRewriter({ // [!code focus]
+      publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site', // [!code focus]
+      resourcesPath: 'resources/js', // [!code focus]
+    }), // [!code focus]
   ],
 }));
 ```
+<!-- prettier-ignore-end -->
 
 ### Plugin options
 
@@ -121,10 +139,11 @@ This property assumes you already have an npm script called `build` in your `pac
 
 From there, you can update your Vite configuration to look for `AEM_CACHING` and then enable caching and minification. An assumption is made that caching and minification are both enabled, if you need separation, add another Maven profile to set another property/environment variable.
 
-```ts{3,12-15}
+<!-- prettier-ignore-start -->
+```ts
 import { bundlesImportRewriter } from '@aem-vite/import-rewriter';
 
-const needsCaching = process.env.AEM_CACHING === 'true';
+const needsCaching = process.env.AEM_CACHING === 'true'; // [!code focus]
 
 export default defineConfig(({ command, mode }) => ({
   plugins: [
@@ -133,11 +152,12 @@ export default defineConfig(({ command, mode }) => ({
       publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site',
       resourcesPath: 'resources/js',
 
-      caching: {
-        enabled: command === 'build' && mode === 'production' && needsCaching,
-        minification: needsCaching,
-      },
+      caching: { // [!code focus]
+        enabled: command === 'build' && mode === 'production' && needsCaching, // [!code focus]
+        minification: needsCaching, // [!code focus]
+      }, // [!code focus]
     }),
   ],
 }));
 ```
+<!-- prettier-ignore-end -->

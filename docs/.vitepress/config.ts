@@ -247,7 +247,7 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
   ],
 
   themeConfig: {
-    logo: 'static/logo.png',
+    logo: '/static/logo.png',
 
     algolia: {
       appId: '5NUB4KA4TT',

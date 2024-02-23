@@ -8,8 +8,6 @@ Each and every project will be unique regarding structure, expected outputs and 
 
 ## Recommended configuration
 
-Below is an example `vite.config.js` which intentionally uses the `vite-tsconfig-paths` as Adobe have adopted TypeScript in their archetype.
-
 What you can see is the same output structures being used align to the [structure](/guide/front-end/structure/) described previously. Some other things that are also going on:
 
 - Sets the `base` path correctly for both `command` types
@@ -22,7 +20,9 @@ What you can see is the same output structures being used align to the [structur
 - Enfore the server origin for static assets via `server.origin`
 
 <!-- prettier-ignore-start -->
-```ts
+::: code-group
+
+```ts [vite.config.js]
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -53,7 +53,12 @@ export default defineConfig(({ command, mode }) => ({
   },
 }));
 ```
+
+:::
 <!-- prettier-ignore-end -->
+
+> [!TIP]
+> This configuration intentionally uses `vite-tsconfig-paths` as Adobe have adopted TypeScript in their archetype.
 
 See [module imports](../module-imports/) which explains the reasoning behind the rollup `output` structure.
 
@@ -65,11 +70,17 @@ A `base` path is required to support static assets and dynamic imports as it wil
 
 By default Vite runs its DevServer in **development** mode, but standard builds always run in **production** which is fine for non-AEM projects whereas AEM needs more control. The above configuration enables us to do things like the below.
 
-```shell
+::: code-group
+
+```sh [development]
 vite build --mode development
-# or
+```
+
+```sh [production]
 vite build --mode production
 ```
+
+:::
 
 Now that you can build both development and production bundles, you can toggle between having features such as sourcemaps and console logging if you wish to test code outside of Vite's DevServer.
 
@@ -79,18 +90,20 @@ Where your inputs come from isn't important as Vite simply consumes anything you
 
 The below example demonsrates this but you will need to keep in mind that the `input` keys should be unqiue otherwise rollup will automatically append an number to the end of the filename. See rollup's [input documentation](https://rollupjs.org/guide/en/#input) for more information.
 
+<!-- prettier-ignore-start -->
 ```ts
 export default defineConfig(() => ({
   build: {
-    rollupOptions: {
-      input: {
-        bundle: 'src/main/webpack/js/app.ts',
-        styles: 'src/main/webpack/css/app.scss',
-      },
-    },
+    rollupOptions: { // [!code focus]
+      input: { // [!code focus]
+        bundle: 'src/main/webpack/js/app.ts', // [!code focus]
+        styles: 'src/main/webpack/css/app.scss', // [!code focus]
+      }, // [!code focus]
+    }, // [!code focus]
   },
 }));
 ```
+<!-- prettier-ignore-end -->
 
 ### Making CSS its own entry
 
@@ -128,14 +141,14 @@ export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/etc.clientlibs/<project>/clientlibs/' : '/',
 
   build: {
-    assetsDir: 'clientlib-site/resources/static',
+    assetsDir: 'clientlib-site/resources/static', // [!code focus]
 
     rollupOptions: {
-      assetFileNames(chunk) {
-        return chunk.name?.endsWith('.css')
-          ? 'clientlib-site/resources/css/[name][extname]'
-          : 'clientlib-site/resources/static/[name].[hash][extname]';
-      },
+      assetFileNames(chunk) { // [!code focus]
+        return chunk.name?.endsWith('.css') // [!code focus]
+          ? 'clientlib-site/resources/css/[name][extname]' // [!code focus]
+          : 'clientlib-site/resources/static/[name].[hash][extname]'; // [!code focus]
+      }, // [!code focus]
     }
   },
 }));

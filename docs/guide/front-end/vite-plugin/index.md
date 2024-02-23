@@ -8,33 +8,53 @@ Evolving AEM Vite has always and is a primary goal of the project. To ensure AEM
 
 ## Solving Challenges
 
-The Java side of AEM Vite works quite well in small doses but it has some flaws which makes maintaining the replacement logic complex and time-consuming. Alongside this you would also need to refresh the page 2-to-3 times before AEM Vite would kick in due to how the internal HTTP requests are handled.
+In the past, AEM Vite relied heavily on Java to maintain the relationship between ClientLibs and the Vite DevServer. While this worked, it was simply a stop gap to solve the immediate issue of how do we get Vite working nicely in AEM. The `@aem-vite/vite-aem-plugin` package was born from this initial idea with the goal of eliminating some of the backend set up and introducing something more digestable for front end developers.
 
-In addition to these points, A Vite specific plugin also aims to bring some boilerplate with it which will ultimately remove the need for complex configurations across projects.
+This Vite plugin reduces the complexity of the set up, but it couples more of the configuration to a central. Providing a richer and simplified DX (Developer Experience) overall was always the goal, and by relying more on Vite as the underpinning driving force it enables more possibilities than the previous Java implementation could have hoped to achieve.
+
+In addition to these points, this plugin also aims to bring some boilerplate along with it that continues to help simplify installation and set up.
 
 ## Installation
 
 Getting started is quick and simple. Run the below command to install the Vite AEM plugin.
 
-```bash
-npm install --save-dev @aem-vite/vite-aem-plugin
-# or; yarn
-yarn add -D @aem-vite/vite-aem-plugin
-# or; pnpm
+::: code-group
+
+```sh [npm]
+npm install -D @aem-vite/vite-aem-plugin
+```
+
+```sh [pnpm]
 pnpm add -D @aem-vite/vite-aem-plugin
 ```
+
+```sh [yarn]
+yarn add -D @aem-vite/vite-aem-plugin
+```
+
+```sh [bun]
+bun add -D @aem-vite/vite-aem-plugin
+```
+
+:::
 
 ## Using The Plugin
 
 This step couldn't be more simple. Run either the `serve` or `build` command for Vite and everything will work like magic.
 
-```bash
+::: code-group
+
+```sh [serve]
 vite serve
-# or
+```
+
+```sh [build]
 vite build
 ```
 
-By default `@aem-vite/vite-aem-plugin` enforces strict port mode when using the Vite DevServer. This will automatically jump to the next available port if `3000` is unavailable.
+:::
+
+By default, `@aem-vite/vite-aem-plugin` enforces strict port mode when using the Vite DevServer. This will automatically jump to the next available port if `3000` is unavailable.
 
 ## Configuration
 
