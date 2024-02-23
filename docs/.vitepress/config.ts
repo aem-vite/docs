@@ -92,6 +92,7 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
   titleTemplate: 'AEM Vite',
   description,
   lastUpdated: true,
+  ignoreDeadLinks: 'localhostLinks',
 
   transformHtml: (_, id, { pageData }) => {
     if (!/[\\/]404\.html$/.test(id)) {
