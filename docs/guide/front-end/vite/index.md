@@ -4,7 +4,7 @@ title: Vite Configuration
 
 # {{ $frontmatter.title }}
 
-Each and every project will be unique regarding structure, expected outputs and general development needs. The following is intended to provide coverage for general expectations using Adobe's AEM Archetype as a reference.
+Each and every project will be unique regarding structure, outputs, and general development needs. The following is intended to provide coverage for general expectations using Adobe's AEM Archetype as a reference.
 
 ## Recommended configuration
 
@@ -64,11 +64,11 @@ See [module imports](../module-imports/) which explains the reasoning behind the
 
 ### Base path
 
-A `base` path is required to support static assets and dynamic imports as it will ensure that certain files are loaded from the correct AEM path.
+A `base` path is required to support static assets and dynamic imports as it will ensure that certain files are loaded from the correct AEM path. Refer to [static assets](../static-assets/) for further details.
 
 ### Specific build modes
 
-By default Vite runs its DevServer in **development** mode, but standard builds always run in **production** which is fine for non-AEM projects whereas AEM needs more control. The above configuration enables us to do things like the below.
+By default, Vite runs its DevServer in **development** mode. Standard builds always run in **production** which is generally fine but you may want more granular control of this which can be achieved using the following.
 
 ::: code-group
 
@@ -82,11 +82,11 @@ vite build --mode production
 
 :::
 
-Now that you can build both development and production bundles, you can toggle between having features such as sourcemaps and console logging if you wish to test code outside of Vite's DevServer.
+Now that you can build both development and production bundles you can switch between having features such as sourcemaps and console logging.
 
 ## Source structure
 
-Where your inputs come from isn't important as Vite simply consumes anything you provide to it. It is, however, recommended that you consider your main website CSS and JavaScript separate entries.
+Where your inputs come from isn't important as Vite simply consumes anything you provide to it. However, we recommended that you consider your main website CSS and JavaScript separate entries.
 
 The below example demonsrates this but you will need to keep in mind that the `input` keys should be unqiue otherwise rollup will automatically append an number to the end of the filename. See rollup's [input documentation](https://rollupjs.org/guide/en/#input) for more information.
 
@@ -105,9 +105,9 @@ export default defineConfig(() => ({
 ```
 <!-- prettier-ignore-end -->
 
-### Making CSS its own entry
+### Explicit CSS entry
 
-Due to how AEM handles CSS it is not recommended to import it directly in your JavaScript modules as this can result in undesired outputs. For consistency, you main CSS outputs should be declared explicitly in your Vite `rollupOptions.input` object. All other CSS specific to things such as React can be imported directly via JavaScript.
+Due to how AEM handles CSS it is not recommended to import it directly in your JavaScript modules as this can result in undesired outputs. For consistency your main CSS outputs should be declared explicitly in your Vite `rollupOptions.input` object. All other CSS specific to things such as React can be imported directly via JavaScript.
 
 ## Plugins
 
@@ -115,7 +115,7 @@ Please refer to Vite's [plugin documentation](https://vitejs.dev/guide/using-plu
 
 ## Code output
 
-The process of how your bundled code gets handled shouldn't change if you won't need it to. The design of AEM Vite enables you to use any structure you wish but recommends ours for the best compatibility. Tools such as Adobe's `aem-clientlib-generator` will work perfectly fine with AEM Vite as it is executed after a build.
+The process of how your bundled code gets handled shouldn't change if you don't need it to. The design of AEM Vite enables you to use any structure you wish but recommends ours for the best compatibility. Tools such as Adobe's `aem-clientlib-generator` will work perfectly fine with AEM Vite as it is executed after a build.
 
 ## DevServer
 
@@ -133,29 +133,10 @@ export default defineConfig(() => ({
 
 ## Static assets
 
-Vite supports static assets without any configuration which works for external projects, but not AEM. To ensure static assets are served correctly in AEM you can use a configuration like the below.
+Refer to [static assets](../static-assets/) for further details.
 
-<!-- prettier-ignore-start -->
-```ts
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/etc.clientlibs/<project>/clientlibs/' : '/',
+## Next Steps
 
-  build: {
-    assetsDir: 'clientlib-site/resources/static', // [!code focus]
-
-    rollupOptions: {
-      assetFileNames(chunk) { // [!code focus]
-        return chunk.name?.endsWith('.css') // [!code focus]
-          ? 'clientlib-site/resources/css/[name][extname]' // [!code focus]
-          : 'clientlib-site/resources/static/[name].[hash][extname]'; // [!code focus]
-      }, // [!code focus]
-    }
-  },
-}));
-```
-<!-- prettier-ignore-end -->
-
-What this does is:
-
-1. Sets the base url for assets to `clientlib-site/resources/static` when running `build`, not `serve`
-2. Allow CSS and other assets to be separated which avoids everything been dumped into the `base` folder
+- [Configure plugin](../vite-plugin/) for Vite
+- [Support module](../module-imports/) imports
+- [Support dynamic](../dynamic-imports/) imports

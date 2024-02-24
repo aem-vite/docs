@@ -37,10 +37,13 @@ There are no strict rules applied to namespaces or the URI that you can apply to
   + * (nt:base) = sling:Folder version
 ```
 
-::: info Please Note
-This assumes you are using the Adobe AEM Archetype which `ui.frontend` builds into `ui.apps`. If your `ui.frontend` project builds and installs itself, this should live within `ui.frontend`.
-:::
+> [!NOTE]
+> This assumes you are using the Adobe AEM Archetype where `ui.frontend` builds into `ui.apps`. If your `ui.frontend` project builds and installs itself this should live within `ui.frontend`.
 
 ## Validating namespaces
 
 If after configuring your project you're able to install the package without issue then no additional validation is required. If, however, you would like to confirm they were created correctly you can visit [CRX Explorer](http://localhost:4502/crx/explorer/browser/index.jsp) and navigate to `/jcr:system/rep:namespaces`.
+
+## Next Steps
+
+- [Configure your front end](../../front-end/) to make full use of Vite.

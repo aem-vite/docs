@@ -34,3 +34,7 @@ Your template policy(s) will also need to be updated to support this structure. 
     clientlibsJsHead="[clientlib-site]"/>
 </page>
 ```
+
+## Next Steps
+
+- [Configure your project](../vite/) with Vite

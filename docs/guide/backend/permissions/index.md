@@ -30,3 +30,8 @@ The final step is to allow the AEM Vite `aem-vite-clientlibs` user access to any
         rep:privileges="{Name}[jcr:all]"/>
 </jcr:root>
 ```
+
+## Next Steps
+
+- [Handling custom namespaces](../custom-namespaces/) when using Vite ecosystem plugins.
+- [Configure your front end](../../front-end/) to make full use of Vite.

@@ -4,7 +4,38 @@ title: Static Assets
 
 # {{ $frontmatter.title }}
 
+Vite supports static assets without any configuration which works for external projects, but not AEM. To ensure static assets are served correctly in AEM you can use a configuration like the below.
+
 Prior to Vite `2.6` there was no way to resolve static assets in JavaScript and CSS without some clunky workarounds. However, as of `2.6` and greater this is fixed.
+
+## Configuration
+
+Update your Vite configuration to resemble the following:
+
+<!-- prettier-ignore-start -->
+```ts
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/etc.clientlibs/<project>/clientlibs/' : '/',
+
+  build: {
+    assetsDir: 'clientlib-site/resources/static', // [!code focus]
+
+    rollupOptions: {
+      assetFileNames(chunk) { // [!code focus]
+        return chunk.name?.endsWith('.css') // [!code focus]
+          ? 'clientlib-site/resources/css/[name][extname]' // [!code focus]
+          : 'clientlib-site/resources/static/[name].[hash][extname]'; // [!code focus]
+      }, // [!code focus]
+    }
+  },
+}));
+```
+<!-- prettier-ignore-end -->
+
+What this does is:
+
+1. Sets the base url for assets to `clientlib-site/resources/static` when running `build`
+2. Allow CSS and other assets to be separated which avoids everything being output to the `base` folder
 
 ## Importing Static Assets
 

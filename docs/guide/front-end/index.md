@@ -19,3 +19,7 @@ These will be completely different for each project so I would recommend you hav
 No two projects will be the same and instructions can only do so much to inform how to migrate to Vite. Many factors will need to be taken into consideration as project structures vary widely depending on whether you are using the AEM Maven Archetype or a custom structure.
 
 Regardless, it is important to have a clear understanding of the structure needed to achieve successful workflows.
+
+## Next Steps
+
+- [Getting your structure](./structure/) ready for Vite

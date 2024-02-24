@@ -8,7 +8,7 @@ Installation is straightforward and easy. Please ensure your read the below care
 
 ## Vite Plugin
 
-Installing the Vite plugin is as simple as using your favourite package manager.
+Installing the Vite plugin is as simple as using your favourite package manager. Navigate to your `ui.frontend` folder and run any of the following:
 
 ::: code-group
 
@@ -30,11 +30,9 @@ bun add -D @aem-vite/vite-aem-plugin
 
 :::
 
-The next step is to [configure your project](../front-end/) to make full use of Vite.
-
 ## Maven Dependency
 
-Add the `aem-vite.all` package as a Maven dependency in your apps `pom.xml` file.
+Add the `aem-vite.all` package as a Maven dependency in your `pom.xml` file.
 
 ```xml
 <dependency>
@@ -55,10 +53,14 @@ Next, add the following to your [FileVault](https://jackrabbit.apache.org/fileva
 </embedded>
 ```
 
-::: info
-This will typically be added to your **all** maven module or **ui.apps** if you don't have an **all** module. Remember to replace `{project}` with your project folder name.
-:::
+> [!TIP]
+> These entries will typically be added to your **all** maven module; or **ui.apps** if you don't have an **all** module. Remember to replace `{project}` with your project name.
 
 ### Dependencies
 
 AEM Vite doesn't rely on any 3rd-party dependencies and only makes use of API's available in the AEM Uber JAR and Cloud SDK.
+
+## Next Steps
+
+- [Configure AEM](../backend/) to enable the AEM Vite.
+- [Configure your front end](../front-end/) to make full use of Vite.

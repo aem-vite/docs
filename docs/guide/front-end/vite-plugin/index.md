@@ -38,7 +38,39 @@ bun add -D @aem-vite/vite-aem-plugin
 
 :::
 
-## Using The Plugin
+## Configuration
+
+<!-- prettier-ignore-start -->
+```ts
+import { viteForAem } from '@aem-vite/vite-aem-plugin'; // [!code focus]
+
+export default defineConfig(() => ({
+  plugins: [
+    viteForAem({ // [!code focus]
+      contentPaths: ['<content path(s)>'], // [!code focus]
+      publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site', // [!code focus]
+    }), // [!code focus]
+  ],
+}));
+```
+<!-- prettier-ignore-end -->
+
+> [!TIP]
+> Refer to the [vite configuration](/guide/front-end/vite/) and [dynamic imports](/guide/front-end/dynamic-imports/) documentation for more information about the `publicPath` option.
+
+### Plugin options
+
+| Property Name                                                                                                   | Type     | Required |
+| :-------------------------------------------------------------------------------------------------------------- | -------- | -------- |
+| **aem**<br><small>Set the hostname and port of your AEM instance.</small>                                       | `object` | No       |
+| **contentPaths**<br><small>A list of content paths (excluding `/content/`) to match ClientLib paths in.</small> | `array`  | Yes      |
+| **publicPath**<br><small>The AEM proxy path to your ClientLib directory.</small>                                | `string` | Yes      |
+| **rewriterOptions**<br><small>Enables the `@aem-vite/import-rewriter` plugin</small>                            | `object` | No       |
+
+> [!NOTE]
+> The `publicPath` option is automatically forwarded onto the import rewriter from `@aem-vite/vite-aem-plugin`.
+
+## Usage
 
 This step couldn't be more simple. Run either the `serve` or `build` command for Vite and everything will work like magic.
 
@@ -55,39 +87,6 @@ vite build
 :::
 
 By default, `@aem-vite/vite-aem-plugin` enforces strict port mode when using the Vite DevServer. This will automatically jump to the next available port if `3000` is unavailable.
-
-## Configuration
-
-```ts{1,6-9}
-import { viteForAem } from '@aem-vite/vite-aem-plugin';
-
-export default defineConfig(() => ({
-  plugins: [
-    // ... all other plugins
-    viteForAem({
-      contentPaths: ['<content path(s)>'],
-      publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site',
-    }),
-  ],
-}));
-```
-
-::: info
-Please refer to the [vite configuration](/guide/front-end/vite/) and [dynamic imports](/guide/front-end/dynamic-imports/) documentation for more information about the `publicPath` option.
-:::
-
-### Plugin options
-
-| Property Name                                                                                                   | Type     | Required |
-| :-------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| **aem**<br><small>Set the hostname and port of your AEM instance.</small>                                       | `object` | No       |
-| **contentPaths**<br><small>A list of content paths (excluding `/content/`) to match ClientLib paths in.</small> | `array`  | Yes      |
-| **publicPath**<br><small>The AEM proxy path to your ClientLib directory.</small>                                | `string` | Yes      |
-| **rewriterOptions**<br><small>Enables the `@aem-vite/import-rewriter` plugin</small>                            | `object` | No       |
-
-::: info Note for `rewriterOptions` configuration
-The `publicPath` option is automatically forwarded onto the import rewriter from `@aem-vite/vite-aem-plugin`.
-:::
 
 ### Content path examples
 
@@ -114,9 +113,8 @@ To match only the **US** path in project one and everything in **Project Two** w
 }
 ```
 
-::: warning Slashes in paths
-Adding slashes to the start or end of these paths will cause in the proxy matcher to fail and respond with 404 page served by Vite.
-:::
+> [!WARNING]
+> Adding slashes to the start or end of these paths will cause in the proxy matcher to fail and respond with 404 page served by Vite.
 
 ## React Support
 
