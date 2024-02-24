@@ -62,5 +62,5 @@ AEM Vite doesn't rely on any 3rd-party dependencies and only makes use of API's 
 
 ## Next Steps
 
-- [Configure AEM](../backend/) to enable the AEM Vite.
+- [Configure AEM](../backend/clientlibs/) to enable the AEM Vite via ClientLibs.
 - [Configure your front end](../front-end/) to make full use of Vite.
