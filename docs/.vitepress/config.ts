@@ -263,7 +263,7 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
     nav: [
       {
         text: 'Installation',
-        link: '/guide/backend/installation/',
+        link: '/guide/installation/',
       },
       {
         text: 'Front End',
