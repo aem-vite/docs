@@ -59,5 +59,5 @@ Next, open your ClientLibs folder/configuration and after `allowProxy` add the `
 
 ## Next Steps
 
-- [Provding AEM Vite](../permissions/) access to read your ClientLibs.
+- [Providing AEM Vite](../permissions/) access to read your ClientLibs.
 - [Configure your front end](../../front-end/) to make full use of Vite.
