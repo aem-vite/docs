@@ -4,13 +4,13 @@ title: Module Imports
 
 # {{ $frontmatter.title }}
 
-An ES module import is a `import` statement that intructs your browser to automatically load a new file in context. This is an amazing feature in modern development as it avoids the need for polyfills and libraries.
+An ES module import is an `import` statement that instructs your browser to automatically load a new file in context. This is an amazing feature in modern development as it avoids the need for polyfills and libraries.
 
 ## The problem
 
-Due to the way Vite generates outputs, `import` statements will become relative which in the context of AEM won't work. Lets say that we have a ClientLib located at: **/etc.clientlibs/&lt;project>/clientlibs/clientlib-site.js**
+Due to the way Vite generates outputs, `import` statements will become relative which in the context of AEM won't work. Let's say that we have a ClientLib located at: **/etc.clientlibs/&lt;project>/clientlibs/clientlib-site.js**
 
-Within `my-clientlib.js` lets assume that a module by the name of `modulea.js` needs to be imported by is been requested using: **../../resources/modulea.js**
+Within `my-clientlib.js` let's assume that a module by the name of `modulea.js` needs to be imported but is being requested using: **../../resources/modulea.js**
 
 What you will see in your browser is a 404 request error for `modulea.js` because the request URI will end up looking something like: **/etc.clientlibs/&lt;project>/clientlibs/clientlib-site/resources/modulea.js**
 

@@ -4,7 +4,7 @@ title: Installation
 
 # {{ $frontmatter.title }}
 
-Installation is straightforward and easy. Please ensure your read the below carefully as some manual steps are needed to finish the installation.
+Installation is straightforward and easy. Please ensure you read the below carefully as some manual steps are needed to finish the installation.
 
 ## Vite Plugin
 
@@ -54,11 +54,11 @@ Next, add the following to your [FileVault](https://jackrabbit.apache.org/fileva
 ```
 
 > [!TIP]
-> These entries will typically be added to your **all** maven module; or **ui.apps** if you don't have an **all** module. Remember to replace `{project}` with your project name.
+> These entries will typically be added to your **all** Maven module; or **ui.apps** if you don't have an **all** module. Remember to replace `{project}` with your project name.
 
 ### Dependencies
 
-AEM Vite doesn't rely on any 3rd-party dependencies and only makes use of API's available in the AEM Uber JAR and Cloud SDK.
+AEM Vite doesn't rely on any 3rd-party dependencies and only makes use of APIs available in the AEM Uber JAR and Cloud SDK.
 
 ## Next Steps
 

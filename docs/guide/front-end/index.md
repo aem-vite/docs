@@ -4,7 +4,7 @@ title: Preparing Your Project
 
 # {{ $frontmatter.title }}
 
-In order to have Vite generate bundles correctly you will need to have your front end structutre setup in a particular way.
+In order to have Vite generate bundles correctly you will need to have your front end structure setup in a particular way.
 
 ## Remove webpack
 
