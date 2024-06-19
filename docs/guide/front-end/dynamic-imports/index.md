@@ -61,14 +61,16 @@ export default defineConfig(() => ({
 | **caching**<br><small>Instruct import rewriter how to handle AEM caching.</small>         | `object` | No       |
 | **publicPath**<br><small>The AEM proxy path to your ClientLib directory.</small>          | `string` | Yes      |
 | **resourcesPath**<br><small>The folder where Vite generated JavaScript resources.</small> | `string` | Yes      |
+| **minify**<br><small>Should `.min` be added to the import path?</small>                   | `boolean`| No      |
 
 #### Caching options
 
 | Property Name                                                                   | Type      | Required | Default    |
 | :------------------------------------------------------------------------------ | --------- | -------- | ---------- |
 | **enabled**<br><small>Should caching support be utilised during builds?</small> | `boolean` | Yes      | -          |
-| **keyFormat**<br><small>Long term cache key format.</small>                     | `string`  | No       | `lc-%s-lc` |
-| **minification**<br><small>Should `.min` be added to the import path?</small>   | `boolean` | No       | `false`    |
+| **keyFormat**<br><small>Long term cache key format.</small>                     | `string`  | No       | `cloud`    |
+
+**KeyFormat** should be one of `cloud` | `acs-modern` | `acs-classic`,
 
 ## How This Works?
 
