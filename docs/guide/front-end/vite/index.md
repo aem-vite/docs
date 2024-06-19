@@ -17,7 +17,7 @@ What you can see is the same output structures being used align to the [structur
 - Disables minification when running in **development** mode
 - Disables sourcemaps when not using the Vite DevServer
 - Prefer `terser` over `esbuild` for minification
-- Enfore the server origin for static assets via `server.origin`
+- Enforce the server origin for static assets via `server.origin`
 
 <!-- prettier-ignore-start -->
 ::: code-group
@@ -88,7 +88,7 @@ Now that you can build both development and production bundles you can switch be
 
 Where your inputs come from isn't important as Vite simply consumes anything you provide to it. However, we recommended that you consider your main website CSS and JavaScript separate entries.
 
-The below example demonsrates this but you will need to keep in mind that the `input` keys should be unqiue otherwise rollup will automatically append an number to the end of the filename. See rollup's [input documentation](https://rollupjs.org/guide/en/#input) for more information.
+The below example demonstrates this but you will need to keep in mind that the `input` keys should be unique otherwise rollup will automatically append an number to the end of the filename. See rollup's [input documentation](https://rollupjs.org/guide/en/#input) for more information.
 
 <!-- prettier-ignore-start -->
 ```ts
@@ -121,7 +121,7 @@ The process of how your bundled code gets handled shouldn't change if you don't 
 
 If you want to customise how the Vite DevServer behaves you can do so via Vite's `server` configuration. By default Vite will attempt to start the server on port `3000` but will automatically increment to the next available port if `3000` is already in use. To ensure this doesn't happen, it is recommended to set a more specific port that you don't expect to change.
 
-Please refer to Vite's [server api documention](https://vitejs.dev/config/#server-options) for more information.
+Please refer to Vite's [server api documentation](https://vitejs.dev/config/#server-options) for more information.
 
 ```ts
 export default defineConfig(() => ({

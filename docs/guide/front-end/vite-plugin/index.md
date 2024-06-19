@@ -8,9 +8,9 @@ Evolving AEM Vite has always and is a primary goal of the project. To ensure AEM
 
 ## Solving Challenges
 
-In the past, AEM Vite relied heavily on Java to maintain the relationship between ClientLibs and the Vite DevServer. While this worked, it was simply a stop gap to solve the immediate issue of how do we get Vite working nicely in AEM. The `@aem-vite/vite-aem-plugin` package was born from this initial idea with the goal of eliminating some of the backend set up and introducing something more digestable for front end developers.
+In the past, AEM Vite relied heavily on Java to maintain the relationship between ClientLibs and the Vite DevServer. While this worked, it was simply a stop gap to solve the immediate issue of how do we get Vite working nicely in AEM. The `@aem-vite/vite-aem-plugin` package was born from this initial idea with the goal of eliminating some of the backend set up and introducing something more digestible for front end developers.
 
-This Vite plugin reduces the complexity of the set up, but it couples more of the configuration to a central. Providing a richer and simplified DX (Developer Experience) overall was always the goal, and by relying more on Vite as the underpinning driving force it enables more possibilities than the previous Java implementation could have hoped to achieve.
+This Vite plugin reduces the complexity of the set up, but it couples more of the configuration to a central plugin. Providing a richer and simplified DX (Developer Experience) overall was always the goal, and by relying more on Vite as the underpinning driving force it enables more possibilities than the previous Java implementation could have hoped to achieve.
 
 In addition to these points, this plugin also aims to bring some boilerplate along with it that continues to help simplify installation and set up.
 
@@ -114,7 +114,7 @@ To match only the **US** path in project one and everything in **Project Two** w
 ```
 
 > [!WARNING]
-> Adding slashes to the start or end of these paths will cause in the proxy matcher to fail and respond with 404 page served by Vite.
+> Adding slashes to the start or end of these paths will cause the proxy matcher to fail and respond with 404 page served by Vite.
 
 ## React Support
 
