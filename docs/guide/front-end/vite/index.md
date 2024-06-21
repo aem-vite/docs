@@ -12,7 +12,7 @@ What you can see is the same output structures being used align to the [structur
 
 - Sets the `base` path correctly for both `command` types
 - Sets the `publicDir` path to `src/assets`. Change this to match your source structure
-- Disables brotli compression calculations (saves 2-5 seconds per prod build)
+- Disables gzip compression calculations (saves 2-5 seconds per prod build)
 - Disables the `manifest.json` file
 - Disables minification when running in **development** mode
 - Disables sourcemaps when not using the Vite DevServer
@@ -31,7 +31,7 @@ export default defineConfig(({ command, mode }) => ({
   publicDir: command === 'build' ? false : 'src/assets',
 
   build: {
-    brotliSize: false,
+    reportCompressedSize: false,
     manifest: false,
     minify: mode === 'development' ? false : 'terser',
     outDir: 'dist',
