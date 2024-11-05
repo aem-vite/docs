@@ -1,6 +1,5 @@
 import { createWriteStream, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { SitemapStream } from 'sitemap';
 import { defineConfigWithTheme, DefaultTheme } from 'vitepress';
 
 interface Link {
@@ -103,15 +102,8 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
     }
   },
 
-  buildEnd: async ({ outDir }) => {
-    const sitemap = new SitemapStream({ hostname: 'https://www.aemvite.dev/' });
-    const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'));
-
-    sitemap.pipe(writeStream);
-    links.forEach((link) => sitemap.write(link));
-    sitemap.end();
-
-    await new Promise((r) => writeStream.on('finish', r));
+  sitemap: {
+    hostname: 'https://www.aemvite.dev',
   },
 
   head: [
@@ -232,11 +224,6 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
         property: 'twitter:site',
         content: '@cshawaus',
       },
-    ],
-    [
-      'script',
-      {},
-      readFileSync(resolve(__dirname, './inlined-scripts/fathom.js'), 'utf-8'),
     ],
     [
       'script',

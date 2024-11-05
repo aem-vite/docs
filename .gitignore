@@ -9,3 +9,6 @@ dist
 cache
 node_modules
 pnpm-global
+
+.vitepress/cache
+.vitepress/dist

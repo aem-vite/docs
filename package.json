@@ -14,11 +14,10 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@types/node": "^20.11.20",
-    "sitemap": "^7.1.1",
-    "vitepress": "1.0.0-rc.44"
+    "@types/node": "^22.9.0",
+    "vitepress": "1.5.0"
   },
   "dependencies": {
-    "@docsearch/js": "^3.5.2"
+    "@docsearch/js": "^3.7.0"
   }
 }

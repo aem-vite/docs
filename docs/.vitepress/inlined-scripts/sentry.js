@@ -1,4 +1,4 @@
-import * as Sentry from "https://esm.sh/@sentry/browser";
+import * as Sentry from "https://esm.sh/@sentry/browser@^7";
 
 Sentry.init({
   dsn: 'https://a257054f72f14d18a20a84a2b1610f33@sentry.cshaw.tech/5',
