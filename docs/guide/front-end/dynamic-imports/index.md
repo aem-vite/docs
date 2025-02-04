@@ -154,9 +154,9 @@ export default defineConfig(({ command, mode }) => ({
       publicPath: '/etc.clientlibs/<project>/clientlibs/clientlib-site',
       resourcesPath: 'resources/js',
 
+      minify: needsCaching, // [!code focus]
       caching: { // [!code focus]
         enabled: command === 'build' && mode === 'production' && needsCaching, // [!code focus]
-        minification: needsCaching, // [!code focus]
       }, // [!code focus]
     }),
   ],
