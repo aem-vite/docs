@@ -1,15 +1,13 @@
-import { createWriteStream, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { defineConfigWithTheme, DefaultTheme } from 'vitepress';
+import { defineConfigWithTheme, DefaultTheme } from 'vitepress'
 
 interface Link {
-  lastmod?: number;
-  url: string;
+  lastmod?: number
+  url: string
 }
 
-const title = 'AEM Vite';
+const title = 'AEM Vite'
 const description =
-  'AEM Vite brings the amazing Vite ecosystem to AEM in a transparent and friendly way.';
+  'AEM Vite brings the amazing Vite ecosystem to AEM in a transparent and friendly way.'
 
 function getGuideSidebar() {
   return [
@@ -80,10 +78,10 @@ function getGuideSidebar() {
         },
       ],
     },
-  ];
+  ]
 }
 
-const links: Link[] = [];
+const links: Link[] = []
 
 export default defineConfigWithTheme<DefaultTheme.Config>({
   base: '/',
@@ -98,7 +96,7 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
       links.push({
         lastmod: pageData.lastUpdated,
         url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-      });
+      })
     }
   },
 
@@ -225,13 +223,6 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
         content: '@cshawaus',
       },
     ],
-    [
-      'script',
-      {
-        type: 'module',
-      },
-      readFileSync(resolve(__dirname, './inlined-scripts/sentry.js'), 'utf-8'),
-    ],
   ],
 
   themeConfig: {
@@ -295,4 +286,4 @@ export default defineConfigWithTheme<DefaultTheme.Config>({
         'Apache 2.0 Licensed. Vite wording and logos are property of Evan You. Adobe and AEM wording and logos are property of Adobe Inc.',
     },
   },
-});
+})
