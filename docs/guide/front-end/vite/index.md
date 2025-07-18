@@ -115,7 +115,22 @@ Please refer to Vite's [plugin documentation](https://vitejs.dev/guide/using-plu
 
 ## Code output
 
-The process of how your bundled code gets handled shouldn't change if you don't need it to. The design of AEM Vite enables you to use any structure you wish but recommends ours for the best compatibility. Tools such as Adobe's `aem-clientlib-generator` will work perfectly fine with AEM Vite as it is executed after a build.
+The process of how your bundled code gets handled shouldn't change if you don't need it to. The design of AEM Vite enables you to use any structure you wish but recommends ours for the best compatibility. Tools such as Adobe's [aem-clientlib-generator](https://github.com/wcm-io-frontend/aem-clientlib-generator) will work perfectly fine with AEM Vite as it is executed after a build.
+
+### Configuring `aem-clientlib-generator`
+
+The [aem-clientlib-generator](https://github.com/wcm-io-frontend/aem-clientlib-generator) tool allows custom properties to be defined, which you can use to enable the ES Module capability of AEM Vite. You can use something like the below in your `clientlib.config.js` configuration file.
+
+```js
+module.exports = {
+  libs: [
+    {
+      customProperties: ['esModule'],
+      esModule: '{Boolean}true',
+    },
+  ],
+}
+```
 
 ## DevServer
 
@@ -128,7 +143,7 @@ export default defineConfig(() => ({
   server: {
     port: 5000,
   },
-}));
+}))
 ```
 
 ## Static assets
