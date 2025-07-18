@@ -20,7 +20,7 @@ hero:
       text: View on GitHub
       link: https://github.com/aem-vite
   image:
-    src: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==
+    src: /static/logo-outlined.png
     alt:
 
 features:
@@ -68,10 +68,8 @@ features:
 
 .Layout > .VPFooter {
   border-top-width: 0;
-}
 
-.image > .image-container {
-  height: 100px;
+  --vp-layout-max-width: 500px;
 }
 
 @media (min-width: 640px) {

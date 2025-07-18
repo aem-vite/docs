@@ -1,4 +1,4 @@
-import { defineConfigWithTheme, DefaultTheme } from 'vitepress'
+import { defineConfig, DefaultTheme } from 'vitepress'
 
 interface Link {
   lastmod?: number
@@ -83,7 +83,7 @@ function getGuideSidebar() {
 
 const links: Link[] = []
 
-export default defineConfigWithTheme<DefaultTheme.Config>({
+export default defineConfig<DefaultTheme.Config>({
   base: '/',
   title,
   titleTemplate: 'AEM Vite',
