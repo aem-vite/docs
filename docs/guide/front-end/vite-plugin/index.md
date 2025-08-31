@@ -60,15 +60,16 @@ export default defineConfig(() => ({
 
 ### Plugin options
 
-| Property Name                                                                                                   | Type     | Required |
-| :-------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| **aem**<br><small>Set the hostname and port of your AEM instance.</small>                                       | `object` | No       |
-| **contentPaths**<br><small>A list of content paths (excluding `/content/`) to match ClientLib paths in.</small> | `array`  | Yes      |
-| **publicPath**<br><small>The AEM proxy path to your ClientLib directory.</small>                                | `string` | Yes      |
-| **rewriterOptions**<br><small>Enables the `@aem-vite/import-rewriter` plugin</small>                            | `object` | No       |
+| Property Name                                                                                                          | Type     | Required |
+| :--------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
+| **aem**<br><small>Set the hostname and port of your AEM instance.</small>                                              | `object` | No       |
+| **contentPaths**<br><small>A list of content paths (excluding `/content/`) to match ClientLib paths in.</small>        | `array`  | Yes      |
+| **keyFormatExpressions**<br><small>A list of key format expressions to use when matching ClientLibs on a page.</small> | `array`  | No       |
+| **publicPath**<br><small>The AEM proxy path to your ClientLib directory.</small>                                       | `string` | Yes      |
+| **rewriterOptions**<br><small>Enables the `@aem-vite/import-rewriter` plugin</small>                                   | `object` | No       |
 
 > [!NOTE]
-> The `publicPath` option is automatically forwarded onto the import rewriter from `@aem-vite/vite-aem-plugin`.
+> The `publicPath` option is automatically forwarded onto the `@aem-vite/import-rewriter` from `@aem-vite/vite-aem-plugin`.
 
 ## Usage
 
