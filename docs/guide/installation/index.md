@@ -38,7 +38,7 @@ Add the `aem-vite.all` package as a Maven dependency in your `pom.xml` file.
 <dependency>
   <groupId>dev.aemvite</groupId>
   <artifactId>aem-vite.all</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.2</version>
   <type>zip</type>
 </dependency>
 ```
